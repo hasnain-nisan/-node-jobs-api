@@ -9,8 +9,9 @@ const errorHandlerMiddleware = (err, req, res, next) => {
         })
     }
 
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .send(err)
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
+        err: err
+    })
 }
 
 module.exports = errorHandlerMiddleware
