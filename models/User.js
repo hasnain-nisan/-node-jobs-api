@@ -46,17 +46,17 @@ UserSchema.methods.getUser = function () {
 
 //generate token
 UserSchema.methods.generateToken = function () {
-    const token = jwt.sign(
-        {
-          id: this._id,
-          name: this.name,
-          email: this.email,
-        },
-        process.env.JWT_SECRET,
-        { expiresIn: "30d" }
-      );
+  const token = jwt.sign(
+    {
+      id: this._id,
+      name: this.name,
+      email: this.email,
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: "30d" }
+  );
 
-    return token
+  return token
 }
 
 module.exports = mongoose.model('User', UserSchema)

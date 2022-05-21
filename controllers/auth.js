@@ -2,7 +2,6 @@
 const User = require('../models/user')
 const {StatusCodes} = require('http-status-codes')
 const {BadRequestError} = require('../errors')
-const jwt = require('jsonwebtoken')
 
 
 const register = async (req, res) => {
