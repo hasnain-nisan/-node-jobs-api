@@ -59,4 +59,10 @@ UserSchema.methods.generateToken = function () {
   return token
 }
 
+//comparte password
+UserSchema.methods.comparePassword = async function (formPassword) {
+  const isMatch = await bcrypt.compare(formPassword, this.password)
+  return isMatch;
+}
+
 module.exports = mongoose.model('User', UserSchema)
