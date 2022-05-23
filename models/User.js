@@ -53,7 +53,7 @@ UserSchema.methods.generateToken = function () {
       email: this.email,
     },
     process.env.JWT_SECRET,
-    { expiresIn: "30d" }
+    { expiresIn: process.env.JWT_LIFETIME }
   );
 
   return token
