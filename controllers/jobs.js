@@ -5,7 +5,7 @@ const getAllJobs = async (req, res) => {
 };
 
 const createJob = async (req, res) => {
-  res.send("Create a job");
+  res.send(req.user)
 };
 
 const getJob = async (req, res) => {

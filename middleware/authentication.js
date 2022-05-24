@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const {UnauthenticatedError} = require('../errors')
 
 const authMiddleware = async (req, res, next) => {
-
+ 
     //check header
     const authHeader = req.headers.authorization
     if(!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -14,13 +14,24 @@ const authMiddleware = async (req, res, next) => {
 
     try {
         const payload = jwt.verify(token, process.env.JWT_SECRET)
-        req.user = {
-            id: payload.id,
-            name: payload.name
+
+        const user = await User.findById(payload.id).select('-password')
+
+        if(!user) {
+            throw new UnauthenticatedError("Not authorized to this route");
+        } else {
+            req.user = user
         }
+ 
+        // req.user = {
+        //     id: payload.id,
+        //     name: payload.name
+        // }
+
         next()
     } catch (error) {
         throw new UnauthenticatedError('Not authorized to this route')
     }
-
 }
+
+module.exports = authMiddleware

@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken')
 
+let User = ""
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String, 
@@ -65,4 +67,12 @@ UserSchema.methods.comparePassword = async function (formPassword) {
   return isMatch;
 }
 
-module.exports = mongoose.model('User', UserSchema)
+
+
+if (mongoose.models.User) {
+  User = mongoose.model("User");
+} else {
+  User = mongoose.model("User", UserSchema);
+}
+
+module.exports = User

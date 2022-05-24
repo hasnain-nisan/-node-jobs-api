@@ -1,13 +1,13 @@
 
 @host = http://localhost:5000/api/v1
 
-
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODhjNjk4ZWFlYzZkNDFhMmI5YmY4NyIsIm5hbWUiOiJuaXNhbjEiLCJlbWFpbCI6Im5pc2FuMUBvdXRsb29rLmNvbSIsImlhdCI6MTY1MzM3MTU2MSwiZXhwIjoxNjU1OTYzNTYxfQ.ypL9tEWV8Bjycy2qwzU1hwAl2a4-fRS2PtVRP4UHLbg
 ###
 POST {{host}}/auth/register HTTP/1.1
 content-type: application/json
 
 {
-    "name": "nisan100",
+    "name": "nisan",
     "email": "nisan100@outlook.com",
     "password": "password"
 }
@@ -15,6 +15,16 @@ content-type: application/json
 ###
 POST {{host}}/auth/login HTTP/1.1
 content-type: application/json
+
+{
+    "email": "nisan1@outlook.com",
+    "password": "password"
+}
+
+###
+POST {{host}}/jobs HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
 
 {
     "email": "nisan100@outlook.com",
