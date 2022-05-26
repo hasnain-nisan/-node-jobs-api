@@ -21,8 +21,8 @@ POST {{host}}/auth/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "nisan1@outlook.com",
-    "password": "password"
+    "email": "nisan1@outlook.com"
+    # "password": "password"
 }
 
 ###
@@ -47,7 +47,7 @@ Authorization: Bearer {{ token }}
 
 ###
 //get single job
-GET {{host}}/jobs/628dd3a8a5e826795951ab6e HTTP/1.1
+GET {{host}}/jobs/628dac91e474a78028165d9 HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{ token }}
 
@@ -56,7 +56,7 @@ Authorization: Bearer {{ token }}
 
 ###
 //update single job
-PATCH {{host}}/jobs/628dd38ad6f097e846d5e2cd HTTP/1.1
+PATCH {{host}}/jobs/628dac91e474a78028165d97 HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{ token }}
 
